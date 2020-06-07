@@ -1,0 +1,24 @@
+{% extends 'contacts/base.html' %}
+
+{% block  content %}
+
+
+<div class="contact-list">
+    {% for x in contact %}
+    <div class="contacts">
+       <div class="detail">
+        <p>{{x.first_name}} {{x.last_name}} </p>
+       </div>
+       <div class="update">
+        <a href="{% url 'update' x.id %}">Update</a>
+    </div>
+    <div class="delete">
+        <a href="{% url 'delete' x.id %}">Delete</a>
+    </div>
+    </div>
+    
+
+{% endfor %}
+</div>
+
+{% endblock %}

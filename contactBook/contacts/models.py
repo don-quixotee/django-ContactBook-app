@@ -5,13 +5,18 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length = 200)
+    def __str__(self):
+        return self.name
     
 
-class people(models.Model):
+class Contact(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length = 100)
-    middle_name =models.CharField(max_length = 100)
+    middle_name =models.CharField(max_length = 100, blank=True)
     email = models.EmailField()
     phone_number = models.CharField(max_length=100)
-    image = models.ImageField()
-    Category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.first_name
